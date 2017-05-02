@@ -1,0 +1,12 @@
+{
+  "name": "prettier-md",
+  "version": "1.0.0",
+  "description": "Apply Prettier to JavaScript code blocks of markdown files",
+  "main": "index.js",
+  "author": "CodinCat <a55951234@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "prettier": "^1.2.2",
+    "recursive-readdir": "^2.1.1"
+  }
+}
