@@ -2,7 +2,7 @@
 
 const fs = require('fs')
 const options = require('./prettierOptions')
-const { runPrettierToDirectory, prettifyFileInNeed } = require('./libs')
+const { runPrettierToDirectory, runPrettierToMarkdownFile } = require('./libs')
 
 const SEMI = '--semi'
 const args = process.argv.slice(2)
@@ -19,15 +19,15 @@ function parseArgsAndApplyFlags (args) {
 
 const paths = parseArgsAndApplyFlags(args)
 
-paths.forEach(arg => {
-  fs.lstat(arg, (err, stats) => {
+paths.forEach(path => {
+  fs.lstat(path, (err, stats) => {
     if (err) throw err
 
     if (stats.isDirectory()) {
-      runPrettierToDirectory(arg)
+      runPrettierToDirectory(path)
       return
     }
 
-    prettifyFileInNeed(arg)
+    runPrettierToMarkdownFile(path)
   })
 })

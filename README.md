@@ -16,11 +16,11 @@ prettier-md filename.md
 prettier-md file1.md file2.md file3.md
 ```
 
-It searches all the JavaScript code blocks: <pre>\```js
+It searches all the JavaScript code blocks of specified files: <pre>\```js
 // JS code here will be processed by Prettier..
 \```</pre>
 
-Note that you must specify the <code>```js</code> or the block will be skipped.
+Note that you must specify the **js** <code>```js</code> or the block will be skipped.
 
 You can also apply to a directory recursively. It will search all the files ended with `.md`:
 
