@@ -1,6 +1,6 @@
 const fs = require('fs')
-const recursive = require('recursive-readdir')
 const prettier = require('prettier')
+const recursive = require('recursive-readdir')
 const options = require('./prettierOptions')
 
 const runPrettierToMarkdownFile = path => {
@@ -31,9 +31,6 @@ const isMarkdown = path =>
 
 const applyPrettier = content =>
   prettier.format(content, options)
-
-const fixLineBreaks = content =>
-  content.replace(/\n$/, '')
 
 const getPrettifiedContent = (path, content) => {
   const blocks = content.split(/( *```js *\n)([\s\S]*?)( *``` *\n)/)
