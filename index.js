@@ -7,12 +7,15 @@ const { runPrettierToDirectory, prettifyFileInNeed } = require('./libs')
 const args = process.argv.slice(2)
 const SEMI = '--semi'
 
-args.forEach(arg => {
-  if (arg === SEMI) {
+function parseFlags (args) {
+  if (args.includes(SEMI)) {
     options.semi = true
-    return
   }
+}
 
+parseFlags(args)
+
+args.forEach(arg => {
   fs.lstat(arg, (err, stats) => {
     if (err) throw err
 
