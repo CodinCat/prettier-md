@@ -1,4 +1,7 @@
 # prettier-md
+
+[![npm version](https://badge.fury.io/js/prettier-md.svg)](https://badge.fury.io/js/prettier-md)
+
 Apply [Prettier](https://github.com/prettier/prettier) to JavaScript code blocks of markdown files.
 
 ## Installation
