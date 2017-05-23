@@ -9,7 +9,7 @@ Apply [Prettier](https://github.com/prettier/prettier) to JavaScript code blocks
 ## Installation
 
 ```sh
-yarn add global prettier-md
+yarn global add prettier-md
 # or
 npm install -g prettier-md
 ```
