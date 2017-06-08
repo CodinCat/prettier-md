@@ -36,19 +36,39 @@ prettier-md docs
 
 ### Options
 
-Default options, this may change in the future:
+Default options:
 
 ```js
 {
-  singleQuote: true,
-  semi: false
+  semi: false,
+  bracketSpacing: false,
 }
 ```
 
 Other options are the same with Prettier's default. Please refer to https://github.com/prettier/prettier#api
 
-Currently only `--semi` flag is supported. Other options will be added in the future:
+Available options:
+
+```js
+{ name: 'print-width', type: Number },
+{ name: 'tab-width', type: Number },
+{ name: 'use-tabs', type: Boolean },
+{ name: 'semi', type: Boolean },
+{ name: 'single-quote', type: Boolean },
+{ name: 'trailing-comma', type: String },
+{ name: 'bracket-spacing', type: Boolean },
+{ name: 'jsx-bracket-same-line', type: Boolean },
+{ name: 'parser ', type: String },
+```
+
+Please refer to https://github.com/prettier/prettier#api for the option values.
+
+#### Example usage:
 
 ```sh
-prettier-md --semi readme.md
+prettier-md --semi --single-quote --parser=flow readme.md
 ```
+
+### Known Issues
+
+https://github.com/CodinCat/prettier-md/issues/1
