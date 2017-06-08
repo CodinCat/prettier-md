@@ -7,7 +7,7 @@ const optionDefinitions = [
   { name: 'trailing-comma', type: String },
   { name: 'bracket-spacing', type: Boolean },
   { name: 'jsx-bracket-same-line', type: Boolean },
-  { name: 'parser ', type: String },
+  { name: 'parser', type: String },
 ]
 
 module.exports = optionDefinitions
