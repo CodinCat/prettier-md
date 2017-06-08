@@ -1,38 +1,47 @@
 const fs = require('fs')
 const prettier = require('prettier')
 const recursive = require('recursive-readdir')
-const options = require('./prettierOptions')
 
-const runPrettierToMarkdownFile = path => {
+const runPrettierToMarkdownFile = (path, options) => {
   fs.readFile(path, 'utf-8', (err, content) => {
     if (err) throw err
-    writeFile(path, getPrettifiedContent(path, content))
+    writeFile(path, getPrettifiedContent(path, content, options))
   })
 }
 
-const runPrettierToDirectory = dir => {
+const runPrettierToDirectory = (dir, options) => {
   recursive(dir, (err, paths) => {
     if (err) throw err
-    paths.forEach(prettifyFileIfIsMarkdown)
+    paths.forEach(path => prettifyFileIfIsMarkdown(path, options))
   })
+}
+
+const camelizeOptions = rawOptions => {
+  let options = {}
+  for (let key in rawOptions) {
+    if (key === '_unknown') continue
+    options[camelize(key)] = rawOptions[key]
+  }
+  return options
 }
 
 exports.runPrettierToMarkdownFile = runPrettierToMarkdownFile
 exports.runPrettierToDirectory = runPrettierToDirectory
+exports.camelizeOptions = camelizeOptions
 
-const prettifyFileIfIsMarkdown = path => {
+const camelize = str =>
+  str.replace(/-([a-z])/g, s => s[1].toUpperCase())
+
+const prettifyFileIfIsMarkdown = (path, options) => {
   if (isMarkdown(path)) {
-    runPrettierToMarkdownFile(path)
+    runPrettierToMarkdownFile(path, options)
   }
 }
 
 const isMarkdown = path =>
   path.slice(-3).toLowerCase() === '.md'
 
-const applyPrettier = content =>
-  prettier.format(content, options)
-
-const getPrettifiedContent = (path, content) => {
+const getPrettifiedContent = (path, content, options) => {
   const blocks = content.split(/( *```js *\n)([\s\S]*?)( *``` *\n)/)
   let shouldPrettify = false
 
@@ -44,7 +53,7 @@ const getPrettifiedContent = (path, content) => {
     if (shouldPrettify) {
       shouldPrettify = false
       try {
-        return applyPrettier(block)
+        return prettier.format(block, options)
       } catch (e) {
         console.warn('failed to apply prettier to', path, 'at code block #' + (i + 2) / 4)
       }
