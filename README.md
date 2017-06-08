@@ -25,7 +25,7 @@ It searches all the JavaScript code blocks of specified files: <pre>\```js
 // JS code here will be processed by Prettier..
 \```</pre>
 
-Note that you must specify the **js** (<code>```js</code>) to your code blocks. **It will write to the files directly and the operation can't be reverted,** so backup your files or track them with git before running this tool.
+Note that you must specify the **js** (<code>```js</code>) to your code blocks. **Currently prettier-md will write to the files directly and the operation can't be reverted,** so backup your files or track them with git before running this tool.
 
 You can also apply to a directory **recursively**. It will search all the files ended with `.md`:
 
@@ -36,7 +36,7 @@ prettier-md docs
 
 ### Options
 
-Default options:
+#### Default options:
 
 ```js
 {
@@ -47,7 +47,7 @@ Default options:
 
 Other options are the same with Prettier's default. Please refer to https://github.com/prettier/prettier#api
 
-Available options:
+#### Available options:
 
 ```js
 { name: 'print-width', type: Number },
