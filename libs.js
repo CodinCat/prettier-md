@@ -40,13 +40,12 @@ const prettifyFileIfIsMarkdown = (path, options) => {
 
 const isMarkdown = path =>
   path.slice(-3).toLowerCase() === '.md'
-
 const getPrettifiedContent = (path, content, options) => {
-  const blocks = content.split(/( *```js *\n)([\s\S]*?)( *``` *\n)/)
+  const blocks = content.split(/( *``` ?(?:js|javascipt|typescript|postcss|json|graphql|markdown) *\n)([\s\S]*?)( *``` *\n)/)
   let shouldPrettify = false
 
   const prettified = blocks.map((block, i) => {
-    if ((/ *```js *\n/).test(block)) {
+    if ((/ *``` ?(?:js|javascipt|typescript|postcss|json|graphql|markdown) *\n/).test(block)) {
       shouldPrettify = true
       return block
     }

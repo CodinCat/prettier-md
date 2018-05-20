@@ -21,11 +21,11 @@ prettier-md filename.md
 prettier-md a.md b.md c.md
 ```
 
-It searches all the JavaScript code blocks of specified files: <pre>\```js
+It searches all the JavaScript, TypeSctipt, PostCSS, json and GraphQL code blocks of specified files: <pre>\```js
 // JS code here will be processed by Prettier..
 \```</pre>
 
-Note that you must specify the **js** (<code>```js</code>) to your code blocks. **Currently prettier-md will write to the files directly and the operation can't be reverted,** so backup your files or track them with git before running this tool.
+Note that you must specify your lang like **js** (<code>```js</code>) to your code blocks. **Currently prettier-md will write to the files directly and the operation can't be reverted,** so backup your files or track them with git before running this tool.
 
 You can also apply to a directory **recursively**. It will search all the files ended with `.md`:
 
